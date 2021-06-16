@@ -1,0 +1,90 @@
+PUT /onl_mkt_biz_mst
+{
+    "settings":{
+        "analysis":{
+            "tokenizer":{
+                "seunjeon":{
+                    "type":"seunjeon_tokenizer"
+                }
+            },
+            "analyzer":{
+                "seunjeon_analyzer":{
+                    "type":"custom",
+                    "tokenizer":"seunjeon",
+                    "filter" : [                        
+                        "lowercase"
+                    ]
+                },
+                 "letter_analyzer":{
+                    "type":"custom",
+                    "tokenizer":"letter",
+                    "filter" : [                        
+                        "lowercase"
+                    ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "bizregno" : {
+              "type" : "keyword"
+            },
+            "regno" : {
+              "type" : "keyword"
+            },
+            "orgname" : {
+              "type" : "keyword"
+            },
+            "bizname" : {
+              "type": "text",
+              "analyzer" : "seunjeon_analyzer"
+            },
+            "crp_prv_cd" : {
+              "type" : "keyword"
+            },
+            "ceoname" : {
+              "type" : "keyword"
+            },
+            "tel" : {
+              "type" : "keyword"
+            },
+            "email" : {
+              "type" : "keyword"
+            },
+            "regdate" : {
+              "type" : "keyword"
+            },
+            "address" : {
+              "type": "text",
+              "analyzer" : "seunjeon_analyzer"
+            },
+            "address_road" : {
+              "type": "text",
+              "analyzer" : "seunjeon_analyzer"
+            },
+            "status" : {
+              "type" : "keyword"
+            },
+            "orgtel" : {
+              "type" : "keyword"
+            },
+            "salestype" : {
+              "type": "text",
+              "analyzer" : "seunjeon_analyzer"
+            },
+            "product" : {
+              "type": "text",
+              "analyzer" : "seunjeon_analyzer"
+            },
+            "domain" : {
+              "type": "text",
+              "analyzer" : "letter_analyzer"
+            },
+            "hostlocation": {
+              "type": "text",
+              "analyzer" : "seunjeon_analyzer"
+            }
+        }  
+    }
+}
